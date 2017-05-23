@@ -1,8 +1,10 @@
 (function(){
+
 	var socket = io('http://localhost:3000');
 	socket.on('hello', function(msg){
 		console.log(msg);
 	});
+	
 	$('form').submit(function(){
 		$.post(
 			$(this).attr('action'),
