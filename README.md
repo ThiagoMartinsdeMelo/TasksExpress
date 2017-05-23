@@ -7,6 +7,7 @@
 + MongoDb
 + Socket.io
 
+<p>Register a list of tasks in real time with the server.</p>
 <p>Installation:</p>
 
 ```
