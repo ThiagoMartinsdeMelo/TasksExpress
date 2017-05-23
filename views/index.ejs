@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="stylesheets/style.css">
+</head>
+<body>
+	<header class="bg-dark">
+		<div class="col-100">
+			<h1 class="color-white"><%= title %></h1>
+		</div>
+	</header>
+	<section>
+		<div class="col-30 bg-grey">
+			<form action="/add" method="post">
+				<legend>Add New Task</legend>
+				<input type="text" name="title" placeholder="Title...">
+				<textarea name="description" cols="30" rows="10" placeholder="Description..."></textarea>
+				<button type="submit">+ADD</button>
+			</form>
+		</div>
+		<div class="col-70">
+			<table>
+				<tbody>
+					<% for(var i=0; i < tasks.length; i++ ){ %>
+					<tr>
+						<td>
+							# <%= i+1 %> <strong><%= tasks[i].title %></strong>
+						</td>
+						<td class="actions">
+							<a href="/turn/<%= tasks[i]._id %>" class="<%= tasks[i].status ? '' : 'color-red' %>"><%= tasks[i].status ? 'ok' : 'not completed' %></a>
+						</td>
+						<td class="hightlight">
+							<%= tasks[i].description %>
+						</td>
+					</tr>
+					<% } %>
+				</tbody>
+			</table>
+		</div>
+	</section>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="crossorigin="anonymous">
+	</script>
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="/javascripts/main.js"></script>
+</body>
+</html>
